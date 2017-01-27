@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import spittr.data.SpittleRepositoryDao;
 
@@ -20,9 +21,9 @@ public class SpittleController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String spittles(Model model) {
-		model.addAttribute("spittleList",spittleRepositoryDao.findSpittles(Long.MAX_VALUE, 20));
-		System.out.println(">>>>"+Long.MAX_VALUE);
+	public String spittles(Model model,@RequestParam(value = "from", defaultValue = "1") int from,
+			@RequestParam(value = "to", defaultValue = "20") int to) {
+		model.addAttribute("spittleList",spittleRepositoryDao.findSpittles(from, to));
 		return "spittles";
 	}
 }

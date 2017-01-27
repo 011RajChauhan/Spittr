@@ -9,14 +9,14 @@ import spittr.Spittle;
 public class SpittleRepositoryDaoImpl implements SpittleRepositoryDao {
 
 	@Override
-	public List<Spittle> findSpittles(long max, int count) {
+	public List<Spittle> findSpittles(int from, int to) {
 		
-		return createSpittleList(count);
+		return createSpittleList(from,to);
 	}
 	
-	private List<Spittle> createSpittleList(int count) {
+	private List<Spittle> createSpittleList(int from,int to) {
 		List<Spittle> spittles = new ArrayList<Spittle>();
-		for(int i=0; i<count; i++) {
+		for(int i=from; i<to; i++) {
 			spittles.add(new Spittle("Spittle "+ i, new Date()));
 		}
 		return spittles;
