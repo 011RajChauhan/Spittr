@@ -21,4 +21,11 @@ public class SpittleRepositoryDaoImpl implements SpittleRepositoryDao {
 		}
 		return spittles;
 	}
+
+	@Override
+	public Object findSpittles(int spittleId) {
+		System.out.println(spittleId);
+		Spittle spittle = new Spittle("Dummy Spittle",new Date(),null,null);
+		return spittle;
+	}
 }
