@@ -9,6 +9,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import spittr.data.SpitterRepositoryDao;
+import spittr.data.SpitterRepositoryDaoImpl;
 import spittr.data.SpittleRepositoryDao;
 import spittr.data.SpittleRepositoryDaoImpl;
 
@@ -31,7 +33,11 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 	}
 	
 	@Bean
-	public SpittleRepositoryDao spittleRepositoryDao(){
+	public SpittleRepositoryDao spittleRepositoryDao() {
 		return new SpittleRepositoryDaoImpl();
+	}
+	@Bean
+	public SpitterRepositoryDao spitterRepositoryDao() {
+		return new SpitterRepositoryDaoImpl();
 	}
 }
