@@ -33,5 +33,10 @@
   		<artifactId>spring-test</artifactId>
   		<version>4.3.5.RELEASE</version>
   	</dependency>
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-validator</artifactId>
+  		<version>5.4.0.CR1</version>
+  	</dependency>
   </dependencies>
 </project>
