@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import spittr.Spittle;
 import spittr.data.SpittleRepositoryDao;
 
 @Controller
@@ -29,7 +30,11 @@ public class SpittleController {
 	}
 	@RequestMapping(value="/spittle/{spittleId}",method=RequestMethod.GET)
 	public String spittle(Model model,@PathVariable int spittleId){
-		model.addAttribute("spittle", spittleRepositoryDao.findSpittles(spittleId));
+		Spittle spittle = spittleRepositoryDao.findSpittles(spittleId);
+		if(spittle==null){
+			throw new SpittleNotFoundException();
+		}
+		model.addAttribute("spittle",spittle );
 		return "spittle";
 	}
 }
